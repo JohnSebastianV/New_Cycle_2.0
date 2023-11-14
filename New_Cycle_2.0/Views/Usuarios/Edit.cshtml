@@ -1,0 +1,119 @@
+﻿@model New_Cycle_2._0.Usuarios
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+<div class="form-horizontal">
+    <h4>Usuarios</h4>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.UsuarioID)
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Email, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Telefono, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 input-group">
+            @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "Contraseña" } })
+            <div class="input-group-append">
+                <button type="button" id="togglePassword" class="btn btn-secondary">
+                    <i id="toggleIcon" class="fa fa-eye"></i>
+                </button>
+            </div>
+            @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.ConfirmarContraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10 input-group">
+            @Html.EditorFor(model => model.ConfirmarContraseña, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "ConfirmarContraseña" } })
+            <div class="input-group-append">
+                <button type="button" id="toggleConfirmPassword" class="btn btn-secondary">
+                    <i id="toggleConfirmIcon" class="fa fa-eye"></i>
+                </button>
+            </div>
+            @Html.ValidationMessageFor(model => model.ConfirmarContraseña, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Tipo_de_Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(model => model.Tipo_de_Usuario, new { @class = "form-control", @readonly = "readonly" })
+            @Html.ValidationMessageFor(model => model.Tipo_de_Usuario, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+</div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+<script>
+        document.getElementById("togglePassword").addEventListener("click", function () {
+            var passwordInput = document.getElementById("Contraseña");
+            var passwordIcon = document.getElementById("toggleIcon");
+            if (passwordInput.type === "password") {
+                passwordInput.type = "text";
+                passwordIcon.className = "fa fa-eye-slash";
+            } else {
+                passwordInput.type = "password";
+                passwordIcon.className = "fa fa-eye";
+            }
+        });
+
+        document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+            var confirmInput = document.getElementById("ConfirmarContraseña");
+            var confirmIcon = document.getElementById("toggleConfirmIcon");
+            if (confirmInput.type === "password") {
+                confirmInput.type = "text";
+                confirmIcon.className = "fa fa-eye-slash";
+            } else {
+                confirmInput.type = "password";
+                confirmIcon.className = "fa fa-eye";
+            }
+        });
+</script>
+}

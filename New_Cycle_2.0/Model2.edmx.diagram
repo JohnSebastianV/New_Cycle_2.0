@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="d2ca2c68dd1b4c8fb3abf6531290c740" Name="Diagram1">
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.Compras" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.Formu_calidad" Width="1.5" PointX="5" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.Metodos_de_pago" Width="1.5" PointX="0.75" PointY="1.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.Productos" Width="1.5" PointX="0.75" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.PuntoEntrega" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_cycle_Com_RecoModel.Ruta" Width="1.5" PointX="2.75" PointY="4.125" IsExpanded="true" />
+        <AssociationConnector Association="New_cycle_Com_RecoModel.FK_Compras_Metodos_de_pago" ManuallyRouted="false" />
+        <AssociationConnector Association="New_cycle_Com_RecoModel.FK_Compras_Productos" ManuallyRouted="false" />
+        <AssociationConnector Association="New_cycle_Com_RecoModel.FK_Formu_calidad_Ruta" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

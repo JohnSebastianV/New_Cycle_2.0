@@ -1,0 +1,60 @@
+﻿@model IEnumerable<New_Cycle_2._0.PuntoEntrega>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+        }
+    </style>
+</head>
+<body>
+    <h2>Puntos de entrega</h2>
+
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_del_punto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Tipo_de_residuos)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_del_punto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tipo_de_residuos)
+                </td>
+                <td>
+
+                    @Html.ActionLink("Detalles", "Details", new { id = item.PuntoEntregaID }) |
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+    <h2></h2>
+    <a href="@Url.Action("Create", "Formu_calidad")" class="btn btn-primary">Realizar Formulario de calidad</a>
+</body>
+</html>

@@ -1,0 +1,132 @@
+﻿@model New_Cycle_2._0.Usuarios
+
+@{
+    ViewBag.Title = "Registro de usuario";
+}
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div style="width: 1440px; height: 1024px; position: relative; background: white">
+        <div style="width: 1440px; height: 1028px; left: 0px; top: -4px; position: absolute; background: white"></div>
+        <div style="width: 704px; height: 1020px; left: 0px; top: 4px; position: absolute; background: rgba(205.84, 245.44, 155.44, 0.71); border-radius: 100px"></div>
+        <img style="width: 322px; height: 179px; left: 0px; top: 35px; position: absolute" src="https://via.placeholder.com/322x179" />
+        <div style="width: 638px; height: 73px; left: 776px; top: 252px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="width: 638px; height: 73px; left: 770px; top: 132px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="left: 891px; top: 15px; position: absolute; color: #743817; font-size: 48px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">Crea tu cuenta</div>
+        <div style="width: 638px; height: 73px; left: 770px; top: 487px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="width: 638px; height: 73px; left: 770px; top: 634px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="width: 638px; height: 73px; left: 770px; top: 781px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="width: 638px; height: 73px; left: 770px; top: 372px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="width: 85px; height: 50px; left: 860px; top: 223px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Email, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div style="width: 394px; height: 50px; left: 860px; top: 103px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div style="width: 329px; height: 50px; left: 854px; top: 458px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Contraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 input-group">
+                    @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "Contraseña" } })
+                    <div class="input-group-append">
+                        <button type="button" id="togglePassword" class="btn btn-secondary">
+                            <i id="toggleIcon" class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div style="width: 329px; height: 50px; left: 857px; top: 604px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                @Html.LabelFor(model => model.ConfirmarContraseña, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10 input-group">
+                    @Html.EditorFor(model => model.ConfirmarContraseña, new { htmlAttributes = new { @class = "form-control", @type = "password", @id = "ConfirmarContraseña" } })
+                    <div class="input-group-append">
+                        <button type="button" id="toggleConfirmPassword" class="btn btn-secondary">
+                            <i id="toggleConfirmIcon" class="fa fa-eye"></i>
+                        </button>
+                    </div>
+                    @Html.ValidationMessageFor(model => model.ConfirmarContraseña, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div style="width: 329px; height: 50px; left: 857px; top: 751px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+
+                @Html.LabelFor(model => model.Tipo_de_Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Tipo_de_Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Tipo_de_Usuario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <div style="width: 329px; height: 50px; left: 860px; top: 343px; position: absolute; color: black; font-size: 30px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+                </div>
+            </div>
+        </div>
+        <img style="width: 47px; height: 62px; left: 799px; top: 135px; position: absolute" src="https://via.placeholder.com/47x62" />
+        <img style="width: 47px; height: 50px; left: 794px; top: 498px; position: absolute" src="https://via.placeholder.com/47x50" />
+        <img style="width: 47px; height: 50px; left: 794px; top: 645px; position: absolute" src="https://via.placeholder.com/47x50" />
+        <img style="width: 47px; height: 50px; left: 794px; top: 792px; position: absolute" src="https://via.placeholder.com/47x50" />
+        <div style="width: 508px; height: 481px; left: 87px; top: 254px; position: absolute; background: rgba(255, 255, 255, 0.37)"></div>
+        <img style="width: 500px; height: 519px; left: 95px; top: 244px; position: absolute; border-radius: 10px" src="https://via.placeholder.com/500x519" />
+        <div style="width: 524px; height: 534px; left: 71px; top: 250px; position: absolute; background: rgba(217, 217, 217, 0.18); border-radius: 9999px"></div>
+        <img style="width: 42px; height: 51px; left: 799px; top: 385px; position: absolute" src="https://via.placeholder.com/42x51" />
+        <img style="width: 83px; height: 80px; left: 778px; top: 250px; position: absolute" src="https://via.placeholder.com/83x80" />
+        <div style="width: 319px; height: 93px; left: 913px; top: 897px; position: absolute; background: rgba(233.75, 199.04, 75.97, 0.43); border-radius: 100px"></div>
+        <div style="left: 971px; top: 918px; position: absolute; color: black; font-size: 32px; font-family: Inter; font-style: italic; font-weight: 700; word-wrap: break-word">
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Crear cuenta" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+    </div>
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+        <script>
+            document.getElementById("togglePassword").addEventListener("click", function () {
+                var passwordInput = document.getElementById("Contraseña");
+                var passwordIcon = document.getElementById("toggleIcon");
+                if (passwordInput.type === "password") {
+                    passwordInput.type = "text";
+                    passwordIcon.className = "fa fa-eye-slash";
+                } else {
+                    passwordInput.type = "password";
+                    passwordIcon.className = "fa fa-eye";
+                }
+            });
+
+            document.getElementById("toggleConfirmPassword").addEventListener("click", function () {
+                var confirmInput = document.getElementById("ConfirmarContraseña");
+                var confirmIcon = document.getElementById("toggleConfirmIcon");
+                if (confirmInput.type === "password") {
+                    confirmInput.type = "text";
+                    confirmIcon.className = "fa fa-eye-slash";
+                } else {
+                    confirmInput.type = "password";
+                    confirmIcon.className = "fa fa-eye";
+                }
+            });
+        </script>
+    }
+}

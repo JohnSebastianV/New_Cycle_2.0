@@ -1,0 +1,76 @@
+﻿
+
+@model IEnumerable<New_Cycle_2._0.Intercambio>
+
+@{
+    ViewBag.Title = "Intercambios";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Intercambios</title>
+    <style>
+        body {
+            background-color: #ACEBFF; /* Cambia el color de fondo según tus preferencias */
+        }
+    </style>
+</head>
+<body>
+
+   
+
+   
+    
+        <h2>Intercambios</h2>
+
+        <p>
+            @Html.ActionLink("Crear nuevo intercambio", "Create")
+        </p>
+        <table class="table">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Descripcion_del_intercambio)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Empresas.Nombre_empresa)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Descripcion_del_intercambio)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Empresas.Nombre_empresa)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto_intercambiado.Nombre_del_producto_intercambiado)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Editar", "Edit", new { id = item.IntercambioID }) |
+                        @Html.ActionLink("Detalles", "Details", new { id = item.IntercambioID }) |
+                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IntercambioID })
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    
+
+</body>
+</html>
+

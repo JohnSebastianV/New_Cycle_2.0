@@ -1,0 +1,46 @@
+﻿@model New_Cycle_2._0.Compras
+
+@{
+    ViewBag.Title = "Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+            background-color: #ACEBFF; /* Cambia el color de fondo según tus preferencias */
+        }
+    </style>
+</head>
+<body>
+    <h2>Detalles</h2>
+
+    <div>
+        <h4>Compras</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Metodos_de_pago.Metodo_de_pago)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Metodos_de_pago.Metodo_de_pago)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Productos.Producto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Productos.Producto)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.FacturaID }) |
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+</body>
+</html>

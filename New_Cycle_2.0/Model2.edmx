@@ -1,0 +1,307 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="New_cycle_Com_RecoModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Compras">
+          <Key>
+            <PropertyRef Name="FacturaID" />
+          </Key>
+          <Property Name="FacturaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ProductoID" Type="int" Nullable="false" />
+          <Property Name="Metodo_de_pagoID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Formu_calidad">
+          <Key>
+            <PropertyRef Name="FormularioID" />
+          </Key>
+          <Property Name="FormularioID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Observaciones" Type="nchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Aspectos_a_mejorar" Type="nchar" MaxLength="2000" Nullable="false" />
+          <Property Name="RutaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Metodos_de_pago">
+          <Key>
+            <PropertyRef Name="Metodo_de_pagoID" />
+          </Key>
+          <Property Name="Metodo_de_pagoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Metodo_de_pago" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Producto" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PuntoEntrega">
+          <Key>
+            <PropertyRef Name="PuntoEntregaID" />
+          </Key>
+          <Property Name="PuntoEntregaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre_del_punto" Type="nchar" MaxLength="300" Nullable="false" />
+          <Property Name="Direccion" Type="nchar" MaxLength="300" Nullable="false" />
+          <Property Name="Tipo_de_residuos" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ruta">
+          <Key>
+            <PropertyRef Name="RutaID" />
+          </Key>
+          <Property Name="RutaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Ruta" Type="nchar" MaxLength="300" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Compras_Metodos_de_pago">
+          <End Role="Metodos_de_pago" Type="Self.Metodos_de_pago" Multiplicity="1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metodos_de_pago">
+              <PropertyRef Name="Metodo_de_pagoID" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="Metodo_de_pagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compras_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoID" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formu_calidad_Ruta">
+          <End Role="Ruta" Type="Self.Ruta" Multiplicity="1" />
+          <End Role="Formu_calidad" Type="Self.Formu_calidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="RutaID" />
+            </Principal>
+            <Dependent Role="Formu_calidad">
+              <PropertyRef Name="RutaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="New_cycle_Com_RecoModelStoreContainer">
+          <EntitySet Name="Compras" EntityType="Self.Compras" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Formu_calidad" EntityType="Self.Formu_calidad" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Metodos_de_pago" EntityType="Self.Metodos_de_pago" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PuntoEntrega" EntityType="Self.PuntoEntrega" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Ruta" EntityType="Self.Ruta" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Compras_Metodos_de_pago" Association="Self.FK_Compras_Metodos_de_pago">
+            <End Role="Metodos_de_pago" EntitySet="Metodos_de_pago" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compras_Productos" Association="Self.FK_Compras_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formu_calidad_Ruta" Association="Self.FK_Formu_calidad_Ruta">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="Formu_calidad" EntitySet="Formu_calidad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="New_cycle_Com_RecoModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Compras">
+          <Key>
+            <PropertyRef Name="FacturaID" />
+          </Key>
+          <Property Name="FacturaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductoID" Type="Int32" Nullable="false" />
+          <Property Name="Metodo_de_pagoID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Metodos_de_pago" Relationship="Self.FK_Compras_Metodos_de_pago" FromRole="Compras" ToRole="Metodos_de_pago" />
+          <NavigationProperty Name="Productos" Relationship="Self.FK_Compras_Productos" FromRole="Compras" ToRole="Productos" />
+        </EntityType>
+        <EntityType Name="Formu_calidad">
+          <Key>
+            <PropertyRef Name="FormularioID" />
+          </Key>
+          <Property Name="FormularioID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Observaciones" Type="String" MaxLength="2000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Aspectos_a_mejorar" Type="String" MaxLength="2000" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="RutaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Ruta" Relationship="Self.FK_Formu_calidad_Ruta" FromRole="Formu_calidad" ToRole="Ruta" />
+        </EntityType>
+        <EntityType Name="Metodos_de_pago">
+          <Key>
+            <PropertyRef Name="Metodo_de_pagoID" />
+          </Key>
+          <Property Name="Metodo_de_pagoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Metodo_de_pago" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Metodos_de_pago" FromRole="Metodos_de_pago" ToRole="Compras" />
+        </EntityType>
+        <EntityType Name="Productos">
+          <Key>
+            <PropertyRef Name="ProductoID" />
+          </Key>
+          <Property Name="ProductoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Producto" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Compras" Relationship="Self.FK_Compras_Productos" FromRole="Productos" ToRole="Compras" />
+        </EntityType>
+        <EntityType Name="PuntoEntrega">
+          <Key>
+            <PropertyRef Name="PuntoEntregaID" />
+          </Key>
+          <Property Name="PuntoEntregaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre_del_punto" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <Property Name="Tipo_de_residuos" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Ruta">
+          <Key>
+            <PropertyRef Name="RutaID" />
+          </Key>
+          <Property Name="RutaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Ruta1" Type="String" MaxLength="300" FixedLength="true" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="Formu_calidad" Relationship="Self.FK_Formu_calidad_Ruta" FromRole="Ruta" ToRole="Formu_calidad" />
+        </EntityType>
+        <Association Name="FK_Compras_Metodos_de_pago">
+          <End Role="Metodos_de_pago" Type="Self.Metodos_de_pago" Multiplicity="1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Metodos_de_pago">
+              <PropertyRef Name="Metodo_de_pagoID" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="Metodo_de_pagoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Compras_Productos">
+          <End Role="Productos" Type="Self.Productos" Multiplicity="1" />
+          <End Role="Compras" Type="Self.Compras" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Productos">
+              <PropertyRef Name="ProductoID" />
+            </Principal>
+            <Dependent Role="Compras">
+              <PropertyRef Name="ProductoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Formu_calidad_Ruta">
+          <End Role="Ruta" Type="Self.Ruta" Multiplicity="1" />
+          <End Role="Formu_calidad" Type="Self.Formu_calidad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Ruta">
+              <PropertyRef Name="RutaID" />
+            </Principal>
+            <Dependent Role="Formu_calidad">
+              <PropertyRef Name="RutaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="New_cycle_Com_RecoEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Compras" EntityType="Self.Compras" />
+          <EntitySet Name="Formu_calidad" EntityType="Self.Formu_calidad" />
+          <EntitySet Name="Metodos_de_pago" EntityType="Self.Metodos_de_pago" />
+          <EntitySet Name="Productos" EntityType="Self.Productos" />
+          <EntitySet Name="PuntoEntrega" EntityType="Self.PuntoEntrega" />
+          <EntitySet Name="Ruta" EntityType="Self.Ruta" />
+          <AssociationSet Name="FK_Compras_Metodos_de_pago" Association="Self.FK_Compras_Metodos_de_pago">
+            <End Role="Metodos_de_pago" EntitySet="Metodos_de_pago" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Compras_Productos" Association="Self.FK_Compras_Productos">
+            <End Role="Productos" EntitySet="Productos" />
+            <End Role="Compras" EntitySet="Compras" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Formu_calidad_Ruta" Association="Self.FK_Formu_calidad_Ruta">
+            <End Role="Ruta" EntitySet="Ruta" />
+            <End Role="Formu_calidad" EntitySet="Formu_calidad" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="New_cycle_Com_RecoModelStoreContainer" CdmEntityContainer="New_cycle_Com_RecoEntities">
+          <EntitySetMapping Name="Compras">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.Compras">
+              <MappingFragment StoreEntitySet="Compras">
+                <ScalarProperty Name="FacturaID" ColumnName="FacturaID" />
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Metodo_de_pagoID" ColumnName="Metodo_de_pagoID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Formu_calidad">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.Formu_calidad">
+              <MappingFragment StoreEntitySet="Formu_calidad">
+                <ScalarProperty Name="FormularioID" ColumnName="FormularioID" />
+                <ScalarProperty Name="Observaciones" ColumnName="Observaciones" />
+                <ScalarProperty Name="Aspectos_a_mejorar" ColumnName="Aspectos_a_mejorar" />
+                <ScalarProperty Name="RutaID" ColumnName="RutaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Metodos_de_pago">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.Metodos_de_pago">
+              <MappingFragment StoreEntitySet="Metodos_de_pago">
+                <ScalarProperty Name="Metodo_de_pagoID" ColumnName="Metodo_de_pagoID" />
+                <ScalarProperty Name="Metodo_de_pago" ColumnName="Metodo_de_pago" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Productos">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.Productos">
+              <MappingFragment StoreEntitySet="Productos">
+                <ScalarProperty Name="ProductoID" ColumnName="ProductoID" />
+                <ScalarProperty Name="Producto" ColumnName="Producto" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PuntoEntrega">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.PuntoEntrega">
+              <MappingFragment StoreEntitySet="PuntoEntrega">
+                <ScalarProperty Name="PuntoEntregaID" ColumnName="PuntoEntregaID" />
+                <ScalarProperty Name="Nombre_del_punto" ColumnName="Nombre_del_punto" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Tipo_de_residuos" ColumnName="Tipo_de_residuos" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Ruta">
+            <EntityTypeMapping TypeName="New_cycle_Com_RecoModel.Ruta">
+              <MappingFragment StoreEntitySet="Ruta">
+                <ScalarProperty Name="RutaID" ColumnName="RutaID" />
+                <ScalarProperty Name="Ruta1" ColumnName="Ruta" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

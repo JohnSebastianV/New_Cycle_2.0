@@ -1,0 +1,45 @@
+﻿@model IEnumerable<New_Cycle_2._0.Formu_calidad>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Aspectos_a_mejorar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ruta.Ruta1)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Observaciones)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aspectos_a_mejorar)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ruta.Ruta1)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.FormularioID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.FormularioID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.FormularioID })
+        </td>
+    </tr>
+}
+
+</table>

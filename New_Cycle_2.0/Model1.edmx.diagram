@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2f30888dd24d4e9fb6a86749b014d5eb" Name="Diagram1">
+        <EntityTypeShape EntityType="New_CycleModel.Clientes" Width="1.5" PointX="3" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Colaboradores" Width="1.5" PointX="3" PointY="4.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Empresas" Width="1.5" PointX="3" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Intercambio" Width="1.5" PointX="5.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Producto_a_intercambiar" Width="1.5" PointX="3" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Producto_intercambiado" Width="1.5" PointX="3" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="New_CycleModel.Usuarios" Width="1.5" PointX="0.75" PointY="4.25" IsExpanded="true" />
+        <AssociationConnector Association="New_CycleModel.FK_Clientes_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="New_CycleModel.FK_Colaboradores_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="New_CycleModel.FK_Empresas_Usuarios" ManuallyRouted="false" />
+        <AssociationConnector Association="New_CycleModel.FK_Intercambio_Empresas" ManuallyRouted="false" />
+        <AssociationConnector Association="New_CycleModel.FK_Intercambio_Producto_a_intercambiar" ManuallyRouted="false" />
+        <AssociationConnector Association="New_CycleModel.FK_Intercambio_Producto_intercambiado" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

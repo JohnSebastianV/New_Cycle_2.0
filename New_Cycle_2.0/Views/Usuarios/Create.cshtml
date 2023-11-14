@@ -1,0 +1,97 @@
+﻿@model New_Cycle_2._0.Usuarios
+
+@{
+    ViewBag.Title = "Registro de usuario";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registro de usuario</title>
+    <style>
+        body {
+            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+            text-align: center;
+        }
+
+        .register-container {
+            width: 500px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .register-form label, .register-form input, .register-form small {
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .register-form small {
+            font-size: 14px;
+        }
+
+        .register-form button {
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2>Registro de usuario</h2>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+            <label for="Nombre">Nombre</label>
+            @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Nombre, "", new { @class = "text-danger" })
+            <h2></h2>
+            <label for="Email">Email</label>
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            <h2></h2>
+            <label for="Telefono">Teléfono</label>
+            @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
+            <h2></h2>
+            <label for="Contraseña">Contraseña</label>
+            @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
+            <h2></h2>
+            <label for="ConfirmarContraseña">Confirmar Contraseña</label>
+            @Html.EditorFor(model => model.ConfirmarContraseña, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+            @Html.ValidationMessageFor(model => model.ConfirmarContraseña, "", new { @class = "text-danger" })
+            <h2></h2>
+            <small>Recuerda que los Tipos de Usuarios son: Empresa, Cliente y Colaborador</small>
+
+            <label for="Tipo_de_Usuario">Tipo de usuario</label>
+            @Html.EditorFor(model => model.Tipo_de_Usuario, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Tipo_de_Usuario, "", new { @class = "text-danger" })
+            <h2></h2>
+
+            <button type="submit">Crear</button>
+        }
+    </div>
+
+    <div>
+        @Html.ActionLink("Volver al inicio", "Index", "Home", new { area = "" }, new { @class = "nav-link" })
+    </div>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+</body>
+</html>
+
+
+
+
+

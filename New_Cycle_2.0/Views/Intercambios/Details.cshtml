@@ -1,0 +1,66 @@
+﻿@model New_Cycle_2._0.Intercambio
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Detalles del intercambio</title>
+    <style>
+        body {
+            background-color: #ACEBFF; /* Cambia el color de fondo según tus preferencias */
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Detalles del intercambio</h2>
+
+    <div>
+        <h4>Intercambio</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Descripcion_del_intercambio)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Descripcion_del_intercambio)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Empresas.Nombre_empresa)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Empresas.Nombre_empresa)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Editar", "Edit", new { id = Model.IntercambioID }) |
+        @Html.ActionLink("Regresar a la lista", "Index")
+    </p>
+
+</body>
+</html>
+

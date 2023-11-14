@@ -1,0 +1,57 @@
+﻿@model New_Cycle_2._0.PuntoEntrega
+
+@{
+    ViewBag.Title = "Details";
+}
+<!DOCTYPE html>
+<html>
+<head>
+
+    <style>
+        body {
+            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+        }
+    </style>
+</head>
+<body>
+    <h2>Detalles</h2>
+
+    <div>
+        <h4>Punto de Entrega</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.Nombre_del_punto)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Nombre_del_punto)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Direccion)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Direccion)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Tipo_de_residuos)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Tipo_de_residuos)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        
+        @Html.ActionLink("Regresar", "Index")
+    </p>
+    <h2></h2>
+    <p><a class="btn btn-outline-dark" href="https://www.google.com/maps?q=@Html.Raw(Uri.EscapeDataString(Model.Direccion))">Ir a Google Maps &raquo;</a></p>
+
+</body>
+</html>

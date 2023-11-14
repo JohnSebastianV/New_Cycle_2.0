@@ -1,0 +1,42 @@
+﻿@model New_Cycle_2._0.Formu_calidad
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Formu_calidad</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Observaciones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observaciones)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Aspectos_a_mejorar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Aspectos_a_mejorar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Ruta.Ruta1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Ruta.Ruta1)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.FormularioID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
