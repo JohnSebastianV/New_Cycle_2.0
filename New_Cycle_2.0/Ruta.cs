@@ -12,6 +12,7 @@ namespace New_Cycle_2._0
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Ruta
     {
@@ -21,8 +22,10 @@ namespace New_Cycle_2._0
             this.Formu_calidad = new HashSet<Formu_calidad>();
         }
         [DisplayName("Ruta")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public int RutaID { get; set; }
         [DisplayName("Ruta")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Ruta1 { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

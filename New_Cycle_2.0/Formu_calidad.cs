@@ -12,13 +12,16 @@ namespace New_Cycle_2._0
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Formu_calidad
     {
         public int FormularioID { get; set; }
         public string Observaciones { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         [DisplayName("Aspectos a mejorar")]
         public string Aspectos_a_mejorar { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         [DisplayName("Ruta")]
         public int RutaID { get; set; }
     

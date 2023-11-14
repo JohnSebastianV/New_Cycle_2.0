@@ -12,15 +12,19 @@ namespace New_Cycle_2._0
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class PuntoEntrega
     {
 
         public int PuntoEntregaID { get; set; }
         [DisplayName("Nombre del punto")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Nombre_del_punto { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Direccion { get; set; }
         [DisplayName("Tipo de residuos")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Tipo_de_residuos { get; set; }
     }
 }

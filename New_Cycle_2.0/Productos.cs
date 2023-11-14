@@ -12,6 +12,7 @@ namespace New_Cycle_2._0
     using System;
     using System.Collections.Generic;
     using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
 
     public partial class Productos
     {
@@ -21,8 +22,10 @@ namespace New_Cycle_2._0
             this.Compras = new HashSet<Compras>();
         }
         [DisplayName("Producto")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public int ProductoID { get; set; }
         [DisplayName("Producto")]
+        [Required(ErrorMessage = "Campo requerido.")]
         public string Producto { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

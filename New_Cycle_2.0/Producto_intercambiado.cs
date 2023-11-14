@@ -11,7 +11,9 @@ namespace New_Cycle_2._0
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Producto_intercambiado
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -21,6 +23,8 @@ namespace New_Cycle_2._0
         }
     
         public int ProductoInterID { get; set; }
+        [Required(ErrorMessage = "Campo requerido.")]
+        [DisplayName("Producto a recibir")]
         public string Nombre_del_producto_intercambiado { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

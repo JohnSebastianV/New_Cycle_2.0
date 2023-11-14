@@ -11,7 +11,9 @@ namespace New_Cycle_2._0
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel;
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Empresas
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -22,6 +24,8 @@ namespace New_Cycle_2._0
     
         public int EmpresaID { get; set; }
         public int UsuarioID { get; set; }
+       
+        [DisplayName("Empresa")]
         public string Nombre_empresa { get; set; }
         public string Email { get; set; }
         public string Telefono { get; set; }
