@@ -10,107 +10,107 @@ using New_Cycle_2._0;
 
 namespace New_Cycle_2._0.Controllers
 {
-    public class PuntoEntregasController : Controller
+    public class RutasController : Controller
     {
         private New_cycle_Com_RecoEntities db = new New_cycle_Com_RecoEntities();
 
-        // GET: PuntoEntregas
+        // GET: Rutas
         public ActionResult Index()
         {
-            return View(db.PuntoEntrega.ToList());
+            return View(db.Ruta.ToList());
         }
 
-        // GET: PuntoEntregas/Details/5
+        // GET: Rutas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Ruta ruta = db.Ruta.Find(id);
+            if (ruta == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(ruta);
         }
 
-        // GET: PuntoEntregas/Create
+        // GET: Rutas/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PuntoEntregas/Create
+        // POST: Rutas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Create([Bind(Include = "RutaID,Ruta1")] Ruta ruta)
         {
             if (ModelState.IsValid)
             {
-                db.PuntoEntrega.Add(puntoEntrega);
+                db.Ruta.Add(ruta);
                 db.SaveChanges();
-                return RedirectToAction("Admin", "Usuarios");
+                return RedirectToAction("Index");
             }
 
-            return View(puntoEntrega);
+            return View(ruta);
         }
 
-        // GET: PuntoEntregas/Edit/5
+        // GET: Rutas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Ruta ruta = db.Ruta.Find(id);
+            if (ruta == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(ruta);
         }
 
-        // POST: PuntoEntregas/Edit/5
+        // POST: Rutas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Edit([Bind(Include = "RutaID,Ruta1")] Ruta ruta)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(puntoEntrega).State = EntityState.Modified;
+                db.Entry(ruta).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(puntoEntrega);
+            return View(ruta);
         }
 
-        // GET: PuntoEntregas/Delete/5
+        // GET: Rutas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Ruta ruta = db.Ruta.Find(id);
+            if (ruta == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(ruta);
         }
 
-        // POST: PuntoEntregas/Delete/5
+        // POST: Rutas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            db.PuntoEntrega.Remove(puntoEntrega);
+            Ruta ruta = db.Ruta.Find(id);
+            db.Ruta.Remove(ruta);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

@@ -7,67 +7,122 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eliminar</title>
+    <title>Delete</title>
     <style>
         body {
-            background-color: #ACEBFF; /* Cambia el color de fondo según tus preferencias */
+            background-color: #FADBD8;
+            font-family: 'Arial', sans-serif;
         }
+
+        .delete-container {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            color: #B03A2E;
+        }
+
+        dl {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        dt, dd {
+            flex: 0 1 48%;
+            padding: 10px;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .delete-link {
+            background-color: #B03A2E;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+            .delete-link:hover {
+                background-color: #943126;
+            }
+
+        .btn-back {
+            text-decoration: none;
+            color: #B03A2E;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #B03A2E;
+        }
+
+            .btn-back:hover {
+                background-color: #F1948A;
+            }
     </style>
 </head>
 <body>
+    <div class="delete-container">
+        <h2>Eliminar</h2>
+        <h3>Estas seguro?</h3>
 
-    <h2>Eliminar</h2>
+        <div>
+            <h4>Intercambio</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Descripcion_del_intercambio)
+                </dt>
 
-    <h3>¿Estás seguro de eliminar?</h3>
-    <div>
-        <h4>Intercambio</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Descripcion_del_intercambio)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Descripcion_del_intercambio)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Descripcion_del_intercambio)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Empresas.Nombre_empresa)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Empresas.Nombre_empresa)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Empresas.Nombre_empresa)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Empresas.Nombre_empresa)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
+                </dd>
 
-            <dd>
-                @Html.DisplayFor(model => model.Producto_a_intercambiar.Nombre_del_producto_a_intercambiar)
-            </dd>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
+                </dt>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
-            </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
+                </dd>
+            </dl>
 
-            <dd>
-                @Html.DisplayFor(model => model.Producto_intercambiado.Nombre_del_producto_intercambiado)
-            </dd>
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
 
-        </dl>
-
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
-
-            <div class="form-actions no-color">
-                <input type="submit" value="Delete" class="btn btn-default" /> |
-                @Html.ActionLink("Regresar a la lista", "Index")
-            </div>
-        }
+                <div class="form-actions">
+                    <input type="submit" value="Eliminar" class="delete-link" />
+                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-back" })
+                </div>
+            }
+        </div>
     </div>
-
 </body>
 </html>
+
 

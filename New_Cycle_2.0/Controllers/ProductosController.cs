@@ -10,107 +10,107 @@ using New_Cycle_2._0;
 
 namespace New_Cycle_2._0.Controllers
 {
-    public class PuntoEntregasController : Controller
+    public class ProductosController : Controller
     {
         private New_cycle_Com_RecoEntities db = new New_cycle_Com_RecoEntities();
 
-        // GET: PuntoEntregas
+        // GET: Productos
         public ActionResult Index()
         {
-            return View(db.PuntoEntrega.ToList());
+            return View(db.Productos.ToList());
         }
 
-        // GET: PuntoEntregas/Details/5
+        // GET: Productos/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Productos productos = db.Productos.Find(id);
+            if (productos == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(productos);
         }
 
-        // GET: PuntoEntregas/Create
+        // GET: Productos/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PuntoEntregas/Create
+        // POST: Productos/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Create([Bind(Include = "ProductoID,Producto")] Productos productos)
         {
             if (ModelState.IsValid)
             {
-                db.PuntoEntrega.Add(puntoEntrega);
+                db.Productos.Add(productos);
                 db.SaveChanges();
-                return RedirectToAction("Admin", "Usuarios");
+                return RedirectToAction("Index");
             }
 
-            return View(puntoEntrega);
+            return View(productos);
         }
 
-        // GET: PuntoEntregas/Edit/5
+        // GET: Productos/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Productos productos = db.Productos.Find(id);
+            if (productos == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(productos);
         }
 
-        // POST: PuntoEntregas/Edit/5
+        // POST: Productos/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Edit([Bind(Include = "ProductoID,Producto")] Productos productos)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(puntoEntrega).State = EntityState.Modified;
+                db.Entry(productos).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(puntoEntrega);
+            return View(productos);
         }
 
-        // GET: PuntoEntregas/Delete/5
+        // GET: Productos/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Productos productos = db.Productos.Find(id);
+            if (productos == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(productos);
         }
 
-        // POST: PuntoEntregas/Delete/5
+        // POST: Productos/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            db.PuntoEntrega.Remove(puntoEntrega);
+            Productos productos = db.Productos.Find(id);
+            db.Productos.Remove(productos);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

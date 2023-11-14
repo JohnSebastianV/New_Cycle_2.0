@@ -1,6 +1,4 @@
-﻿
-
-@model IEnumerable<New_Cycle_2._0.Intercambio>
+﻿@model IEnumerable<New_Cycle_2._0.Intercambio>
 
 @{
     ViewBag.Title = "Intercambios";
@@ -10,23 +8,89 @@
 <html>
 <head>
     <title>Intercambios</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+z0I5t9zjnv0Z+xBC+ZlA2jgIddE2mIi2JxI5O2nEJnqNiz5Z9g6GO6GUqO8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            background-color: #ACEBFF; /* Cambia el color de fondo según tus preferencias */
+            background-color: #ACEBFF;
+            text-align: center;
+            font-family: Arial, sans-serif;
         }
+        .index-container {
+            width: 80%;
+            margin: 20px auto;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+        }
+
+        h2 {
+            color: #743817;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007BFF;
+            
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .action-links {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+            .action-links:hover {
+                background-color: #0056b3;
+            }
+
+        .delete-link {
+            color: #fff;
+            background-color: #dc3545;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+            .delete-link:hover {
+                background-color: #c82333;
+            }
     </style>
 </head>
 <body>
-
-   
-
-   
-    
+    <div class="index-container">
         <h2>Intercambios</h2>
 
         <p>
-            @Html.ActionLink("Crear nuevo intercambio", "Create")
+            <a href="@Url.Action("Create")" class="action-links">Crear nuevo intercambio</a>
         </p>
+        <p>
+            <a href="@Url.Action("Create", "Producto_a_intercambiar", new { area = "" })" class="action-links">Crear Nuevos Productos a entregar</a>
+        </p>
+
         <table class="table">
             <tr>
                 <th>
@@ -60,17 +124,15 @@
                         @Html.DisplayFor(modelItem => item.Producto_intercambiado.Nombre_del_producto_intercambiado)
                     </td>
                     <td>
-                        @Html.ActionLink("Editar", "Edit", new { id = item.IntercambioID }) |
-                        @Html.ActionLink("Detalles", "Details", new { id = item.IntercambioID }) |
-                        @Html.ActionLink("Eliminar", "Delete", new { id = item.IntercambioID })
+                        <a href="@Url.Action("Edit", new { id = item.IntercambioID })" class="action-links">Editar</a>
+                        <h2></h2>
+                        <a href="@Url.Action("Delete", new { id = item.IntercambioID })" class="delete-link">Eliminar</a>
                     </td>
                 </tr>
             }
-
         </table>
-
-    
-
+        </div>
 </body>
 </html>
+
 

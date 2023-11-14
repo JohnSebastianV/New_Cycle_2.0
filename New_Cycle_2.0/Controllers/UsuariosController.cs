@@ -61,7 +61,7 @@ namespace New_Cycle_2._0.Controllers
                     if (usuarios.Contraseña == usuarios.ConfirmarContraseña)
                     {
                         // Verifica si el tipo de usuario es válido
-                        if (usuarios.Tipo_de_Usuario == "Empresa" || usuarios.Tipo_de_Usuario == "Cliente" || usuarios.Tipo_de_Usuario == "Colaborador")
+                        if (usuarios.Tipo_de_Usuario == "Empresa" || usuarios.Tipo_de_Usuario == "Cliente" || usuarios.Tipo_de_Usuario == "Colaborador" || usuarios.Tipo_de_Usuario == "Administrador")
                         {
                             // Crear un nuevo registro de usuario en la tabla de Usuarios
                             db.Usuarios.Add(usuarios);
@@ -82,6 +82,12 @@ namespace New_Cycle_2._0.Controllers
                             {
                                 var colaborador = new Colaboradores { UsuarioID = usuarios.UsuarioID, Nombre_Colaborador = usuarios.Nombre, Email = usuarios.Email, Telefono = usuarios.Telefono, Contraseña = usuarios.Contraseña };
                                 db.Colaboradores.Add(colaborador);
+                            }
+                            else if (usuarios.Tipo_de_Usuario == "Administrador")
+                            {
+                                db.Usuarios.Add(usuarios);
+                                db.SaveChanges();
+
                             }
 
                             db.SaveChanges();
@@ -208,7 +214,12 @@ namespace New_Cycle_2._0.Controllers
                     // Redirigir al controlador y acción correspondiente para clientes o colaboradores
                     return RedirectToAction("Index", "Home");
                 }
-                
+                else if (usuarios.Tipo_de_Usuario == "Administrador")
+                {
+                    // Redirigir al controlador y acción correspondiente para empresas
+                    return RedirectToAction("Admin", "Usuarios");
+                }
+
             }
             else
             {
@@ -232,7 +243,7 @@ namespace New_Cycle_2._0.Controllers
             return View();
         }
 
-        public ActionResult LoginFigma()
+        public ActionResult Admin()
         {
             return View();
         }

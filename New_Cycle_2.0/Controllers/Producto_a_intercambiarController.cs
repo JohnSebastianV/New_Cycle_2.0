@@ -10,107 +10,107 @@ using New_Cycle_2._0;
 
 namespace New_Cycle_2._0.Controllers
 {
-    public class PuntoEntregasController : Controller
+    public class Producto_a_intercambiarController : Controller
     {
-        private New_cycle_Com_RecoEntities db = new New_cycle_Com_RecoEntities();
+        private New_CycleEntities db = new New_CycleEntities();
 
-        // GET: PuntoEntregas
+        // GET: Producto_a_intercambiar
         public ActionResult Index()
         {
-            return View(db.PuntoEntrega.ToList());
+            return View(db.Producto_a_intercambiar.ToList());
         }
 
-        // GET: PuntoEntregas/Details/5
+        // GET: Producto_a_intercambiar/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Producto_a_intercambiar producto_a_intercambiar = db.Producto_a_intercambiar.Find(id);
+            if (producto_a_intercambiar == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(producto_a_intercambiar);
         }
 
-        // GET: PuntoEntregas/Create
+        // GET: Producto_a_intercambiar/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: PuntoEntregas/Create
+        // POST: Producto_a_intercambiar/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Create([Bind(Include = "ProductoAInterID,Nombre_del_producto_a_intercambiar")] Producto_a_intercambiar producto_a_intercambiar)
         {
             if (ModelState.IsValid)
             {
-                db.PuntoEntrega.Add(puntoEntrega);
+                db.Producto_a_intercambiar.Add(producto_a_intercambiar);
                 db.SaveChanges();
-                return RedirectToAction("Admin", "Usuarios");
+                return RedirectToAction("Index", "Intercambios");
             }
 
-            return View(puntoEntrega);
+            return View(producto_a_intercambiar);
         }
 
-        // GET: PuntoEntregas/Edit/5
+        // GET: Producto_a_intercambiar/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Producto_a_intercambiar producto_a_intercambiar = db.Producto_a_intercambiar.Find(id);
+            if (producto_a_intercambiar == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(producto_a_intercambiar);
         }
 
-        // POST: PuntoEntregas/Edit/5
+        // POST: Producto_a_intercambiar/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que quiere enlazarse. Para obtener 
         // más detalles, vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "PuntoEntregaID,Nombre_del_punto,Direccion,Tipo_de_residuos")] PuntoEntrega puntoEntrega)
+        public ActionResult Edit([Bind(Include = "ProductoAInterID,Nombre_del_producto_a_intercambiar")] Producto_a_intercambiar producto_a_intercambiar)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(puntoEntrega).State = EntityState.Modified;
+                db.Entry(producto_a_intercambiar).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(puntoEntrega);
+            return View(producto_a_intercambiar);
         }
 
-        // GET: PuntoEntregas/Delete/5
+        // GET: Producto_a_intercambiar/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            if (puntoEntrega == null)
+            Producto_a_intercambiar producto_a_intercambiar = db.Producto_a_intercambiar.Find(id);
+            if (producto_a_intercambiar == null)
             {
                 return HttpNotFound();
             }
-            return View(puntoEntrega);
+            return View(producto_a_intercambiar);
         }
 
-        // POST: PuntoEntregas/Delete/5
+        // POST: Producto_a_intercambiar/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            PuntoEntrega puntoEntrega = db.PuntoEntrega.Find(id);
-            db.PuntoEntrega.Remove(puntoEntrega);
+            Producto_a_intercambiar producto_a_intercambiar = db.Producto_a_intercambiar.Find(id);
+            db.Producto_a_intercambiar.Remove(producto_a_intercambiar);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

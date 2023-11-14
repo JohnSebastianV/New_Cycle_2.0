@@ -3,55 +3,122 @@
 @{
     ViewBag.Title = "Details";
 }
+
 <!DOCTYPE html>
 <html>
 <head>
-
+    <title>Detalles</title>
     <style>
         body {
-            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+            background-color: #D4E6F1;
+            font-family: 'Arial', sans-serif;
         }
+
+        .details-container {
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            color: #343A40;
+        }
+
+        h4 {
+            color: #007BFF;
+        }
+
+        hr {
+            border-top: 1px solid #007BFF;
+        }
+
+        .dl-horizontal {
+            margin-top: 20px;
+        }
+
+        dt {
+            font-weight: bold;
+            color: #007BFF;
+        }
+
+        dd {
+            margin-left: 10px;
+        }
+
+        .btn-back {
+            text-decoration: none;
+            color: #343A40;
+            padding: 10px 20px;
+            border-radius: 5px;
+            border: 1px solid #343A40;
+            margin-top: 20px;
+            display: inline-block;
+        }
+
+            .btn-back:hover {
+                background-color: #CED4DA;
+            }
+
+        .btn-google-maps {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #007BFF;
+            display: inline-block;
+        }
+
+            .btn-google-maps:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
-    <h2>Detalles</h2>
+    <div class="details-container">
+        <h2>Detalles</h2>
 
-    <div>
-        <h4>Punto de Entrega</h4>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                @Html.DisplayNameFor(model => model.Nombre_del_punto)
-            </dt>
+        <div>
+            <h4>Punto de Entrega</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.Nombre_del_punto)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Nombre_del_punto)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Nombre_del_punto)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Direccion)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Direccion)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Direccion)
+                </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.Tipo_de_residuos)
-            </dt>
+                <dt>
+                    @Html.DisplayNameFor(model => model.Tipo_de_residuos)
+                </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.Tipo_de_residuos)
-            </dd>
+                <dd>
+                    @Html.DisplayFor(model => model.Tipo_de_residuos)
+                </dd>
+            </dl>
+        </div>
 
-        </dl>
+        <p>
+            @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-back" })
+        </p>
+
+        <h2></h2>
+
+        <p>
+            <a class="btn btn-google-maps" href="https://www.google.com/maps?q=@Html.Raw(Uri.EscapeDataString(Model.Direccion))" target="_blank">Ir a Google Maps &raquo;</a>
+        </p>
     </div>
-    <p>
-        
-        @Html.ActionLink("Regresar", "Index")
-    </p>
-    <h2></h2>
-    <p><a class="btn btn-outline-dark" href="https://www.google.com/maps?q=@Html.Raw(Uri.EscapeDataString(Model.Direccion))">Ir a Google Maps &raquo;</a></p>
-
 </body>
 </html>

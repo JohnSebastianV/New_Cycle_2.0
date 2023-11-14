@@ -5,20 +5,73 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+z0I5t9zjnv0Z+xBC+ZlA2jgIddE2mIi2JxI5O2nEJnqNiz5Z9g6GO6GUqO8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         body {
-            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+            background-color: #CEF59B;
+            font-family: 'Arial', sans-serif;
+            text-align: center;
         }
+
+        h2 {
+            color: #743817;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #007BFF;
+            color: #fff;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .details-link {
+            text-decoration: none;
+            padding: 5px 10px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+            .details-link:hover {
+                background-color: #0056b3;
+            }
+
+        .btn-primary {
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+            .btn-primary:hover {
+                background-color: #0056b3;
+            }
     </style>
 </head>
 <body>
     <h2>Puntos de entrega</h2>
 
-
-    <table class="table">
+    <table>
         <tr>
             <th>
                 @Html.DisplayNameFor(model => model.Nombre_del_punto)
@@ -45,16 +98,12 @@
                     @Html.DisplayFor(modelItem => item.Tipo_de_residuos)
                 </td>
                 <td>
-
-                    @Html.ActionLink("Detalles", "Details", new { id = item.PuntoEntregaID }) |
-
+                    <a href="@Url.Action("Details", new { id = item.PuntoEntregaID })" class="details-link">Detalles</a>
                 </td>
             </tr>
         }
-
     </table>
 
-    <h2></h2>
-    <a href="@Url.Action("Create", "Formu_calidad")" class="btn btn-primary">Realizar Formulario de calidad</a>
+    <a href="@Url.Action("Create", "Formu_calidad")" class="btn-primary">Realizar Formulario de calidad</a>
 </body>
 </html>

@@ -1,4 +1,4 @@
-﻿@model New_Cycle_2._0.Compras
+﻿@model New_Cycle_2._0.Ruta
 
 @{
     ViewBag.Title = "Delete";
@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Eliminar</title>
+    <title>Delete</title>
     <style>
         body {
             background-color: #FADBD8;
@@ -43,7 +43,7 @@
             justify-content: space-between;
         }
 
-        .delete-link {
+        .btn-delete {
             background-color: #B03A2E;
             color: #fff;
             border: none;
@@ -52,7 +52,7 @@
             cursor: pointer;
         }
 
-            .delete-link:hover {
+            .btn-delete:hover {
                 background-color: #943126;
             }
 
@@ -72,26 +72,18 @@
 <body>
     <div class="delete-container">
         <h2>Eliminar</h2>
+        <h3>Estas seguro de eliminar esta ruta?</h3>
 
-        <h3>¿Estás seguro de eliminar esta compra?</h3>
         <div>
-            <h4>Compras</h4>
+            <h4>Ruta</h4>
             <hr />
             <dl class="dl-horizontal">
                 <dt>
-                    @Html.DisplayNameFor(model => model.Metodos_de_pago.Metodo_de_pago)
+                    @Html.DisplayNameFor(model => model.Ruta1)
                 </dt>
 
                 <dd>
-                    @Html.DisplayFor(model => model.Metodos_de_pago.Metodo_de_pago)
-                </dd>
-
-                <dt>
-                    @Html.DisplayNameFor(model => model.Productos.Producto)
-                </dt>
-
-                <dd>
-                    @Html.DisplayFor(model => model.Productos.Producto)
+                    @Html.DisplayFor(model => model.Ruta1)
                 </dd>
             </dl>
 
@@ -100,8 +92,8 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-actions">
-                    <input type="submit" value="Eliminar" class="delete-link" />
-                    @Html.ActionLink("Regresar", "Index", null, new { @class = "btn btn-back" })
+                    <input type="submit" value="Eliminar" class="btn btn-delete" />
+                    <a href="@Url.Action("Index")" class="btn btn-back">Regresar</a>
                 </div>
             }
         </div>

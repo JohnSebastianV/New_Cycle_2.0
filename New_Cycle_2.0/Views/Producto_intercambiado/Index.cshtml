@@ -1,0 +1,94 @@
+﻿@model IEnumerable<New_Cycle_2._0.Producto_intercambiado>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-KyZXEAg3QhqLMpG8r+Knujsl5+z0I5t9zjnv0Z+xBC+ZlA2jgIddE2mIi2JxI5O2nEJnqNiz5Z9g6GO6GUqO8g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <style>
+        body {
+            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+            text-align: center;
+            font-family: Arial, sans-serif;
+        }
+
+        h2 {
+            color: #743817;
+        }
+
+        p {
+            margin-top: 20px;
+        }
+
+        table {
+            width: 80%;
+            margin: 20px auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 10px;
+        }
+
+        th {
+            background-color: #007BFF;
+            
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        .delete-link {
+            color: #fff;
+            background-color: #dc3545;
+            padding: 5px 10px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+            .delete-link:hover {
+                background-color: #c82333;
+            }
+    </style>
+</head>
+<body>
+    <h2>Productos de Intercambio</h2>
+
+    <p>
+        <a href="@Url.Action("Create")" class="btn btn-primary">Crear Nuevo Producto</a>
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Nombre_del_producto_intercambiado)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre_del_producto_intercambiado)
+                </td>
+                <td>
+                    <a href="@Url.Action("Delete", new { id = item.ProductoInterID })" class="delete-link">Eliminar</a>
+                </td>
+            </tr>
+        }
+    </table>
+</body>
+</html>
+
+

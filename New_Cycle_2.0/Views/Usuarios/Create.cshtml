@@ -10,7 +10,7 @@
     <title>Registro de usuario</title>
     <style>
         body {
-            background-color: #CEF59B; /* Cambia el color de fondo según tus preferencias */
+            background-color: #CEF59B;
             text-align: center;
         }
 
@@ -32,6 +32,22 @@
             font-size: 14px;
         }
 
+        .register-form .password-container {
+            position: relative;
+        }
+
+        .register-form input[type="password"] {
+            padding-right: 30px;
+        }
+
+        .register-form .toggle-password {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+        }
+
         .register-form button {
             background-color: #007BFF;
             color: #fff;
@@ -39,7 +55,20 @@
             padding: 10px 20px;
             border-radius: 5px;
         }
+        .action-links {
+            text-decoration: none;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+            .action-links:hover {
+                background-color: #0056b3;
+            }
     </style>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
 </head>
 <body>
     <div class="register-container">
@@ -62,14 +91,23 @@
             @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Telefono, "", new { @class = "text-danger" })
             <h2></h2>
-            <label for="Contraseña">Contraseña</label>
-            @Html.EditorFor(model => model.Contraseña, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+
+            <div class="password-container">
+                <label for="Contraseña">Contraseña</label>
+                <input id="Contraseña" type="password" class="form-control" name="Contraseña" />
+                <span class="toggle-password" id="mostrarContraseña">&#128065;</span>
+            </div>
             @Html.ValidationMessageFor(model => model.Contraseña, "", new { @class = "text-danger" })
             <h2></h2>
-            <label for="ConfirmarContraseña">Confirmar Contraseña</label>
-            @Html.EditorFor(model => model.ConfirmarContraseña, new { htmlAttributes = new { @class = "form-control", @type = "password" } })
+
+            <div class="password-container">
+                <label for="ConfirmarContraseña">Confirmar Contraseña</label>
+                <input id="ConfirmarContraseña" type="password" class="form-control" name="ConfirmarContraseña" />
+                <span class="toggle-password" id="mostrarConfirmContraseña">&#128065;</span>
+            </div>
             @Html.ValidationMessageFor(model => model.ConfirmarContraseña, "", new { @class = "text-danger" })
             <h2></h2>
+
             <small>Recuerda que los Tipos de Usuarios son: Empresa, Cliente y Colaborador</small>
 
             <label for="Tipo_de_Usuario">Tipo de usuario</label>
@@ -88,8 +126,26 @@
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
+
+    <script>
+        $(document).ready(function () {
+            $(".toggle-password").click(function () {
+                var input = $(this).prev('input');
+                var icon = $(this);
+
+                if (input.attr("type") === "password") {
+                    input.attr("type", "text");
+                    icon.html("&#128064;"); // Otra cara unicode para "Ocultar Contraseña"
+                } else {
+                    input.attr("type", "password");
+                    icon.html("&#128065;");
+                }
+            });
+        });
+    </script>
 </body>
 </html>
+
 
 
 
